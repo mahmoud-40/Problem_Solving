@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Mahmoud/Hell/ProblemSolving/Codeforces/Topics/SegmentTree",
-      "program": "c:/Mahmoud/Hell/ProblemSolving/Codeforces/Topics/SegmentTree/build/Debug/outDebug",
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
