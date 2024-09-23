@@ -33,40 +33,40 @@
 
 using namespace std;
 
+// There are n apples with known weights. Your task is to divide the apples into two groups so that the difference between the weights of the groups is minimal.
+
+vector<int> a;
+int n, tot, ans = INT32_MAX;
+
+int fun(int i, int sum)
+{
+    // base case
+    if (i >= si(a))
+    {
+        return abs(tot - 2 * sum); // why 2*sum? because we are dividing the array into two groups
+    }
+
+    // recursive call
+    int add = fun(i + 1, sum + a[i]); // add a[i] to the current group
+
+    int sub = fun(i + 1, sum); // don't add a[i] to the current group
+
+    return min(add, sub);
+}
+
 void solve()
 {
-    int n;
     cin >> n;
 
-    vector<int> w(n);
+    a.resize(n);
 
     for (int i = 0; i < n; i++)
     {
-        cin >> w[i];
+        cin >> a[i];
+        tot += a[i];
     }
 
-    int ans = LLONG_MAX;
-
-    for (int i = 0; i < (1 << n); i++) // 2^n
-    {
-        int sum1 = 0, sum2 = 0;
-
-        for (int j = 0; j < n; j++)
-        {
-            if (i & (1 << j)) // if jth bit is set in i
-            {
-                sum1 += w[j];
-            }
-            else
-            {
-                sum2 += w[j];
-            }
-        }
-
-        ans = min(ans, abs(sum1 - sum2));
-    }
-
-    cout << ans << endl;
+    cout << fun(0, 0) << endl;
 }
 
 signed main()
